@@ -1,0 +1,11 @@
+number = input() # the numbers should be introduced as strings because only this way you can devide the elements
+list_of_numbers = []
+
+for n in number: # the aim of the for cycle is to convert each element to in and append it in a list
+    num = int(n)
+    list_of_numbers.append(num)
+
+sorted_list_of_numbers = sorted(list_of_numbers) # the elements of the list will be sorted from the smallest to the biggest
+reversed_sorted_list_of_numbers = sorted_list_of_numbers[::-1] # reverse the elements with slicing
+
+print("".join(map(str, reversed_sorted_list_of_numbers))) # the "".join method works only with str, thats why each element in the list should be mapped to str
