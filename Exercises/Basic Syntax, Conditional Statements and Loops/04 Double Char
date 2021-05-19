@@ -1,0 +1,6 @@
+string = input()
+new_string = []
+for character in string:
+    new_string += character*2
+
+print("".join(new_string))
