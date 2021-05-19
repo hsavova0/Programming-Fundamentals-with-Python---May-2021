@@ -1,0 +1,11 @@
+# Patterns
+number_of_stars = int(input())
+increase_number_of_stars = 0
+
+while increase_number_of_stars < number_of_stars:
+    increase_number_of_stars += 1
+    print(increase_number_of_stars*"*")
+
+while number_of_stars > 0:
+    number_of_stars -= 1
+    print(number_of_stars*"*")
