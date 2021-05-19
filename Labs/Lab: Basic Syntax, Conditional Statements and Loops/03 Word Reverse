@@ -1,7 +1,22 @@
-Word Reverse
-
+# Word Reverse
+# Slicing
 word = input()
 
 reversed_word = word[::-1]
 
 print(reversed_word)
+
+# While cycle:
+word = input()
+reversed_word = []
+index = len(word) # calculate length of string and save in index
+while index > 0:
+    reversed_word += word[index-1] # save the value of str[index-1] in reverseString
+    index = index - 1 # decrement index
+
+print(reversed_word) # print reversed string
+
+# Using the .join method
+word = input()
+reversed_word = "".join(reversed(word)) # .join() method merges all of the characters resulting from the reversed iteration into a new string
+print(reversed_word) #print the reversed string
