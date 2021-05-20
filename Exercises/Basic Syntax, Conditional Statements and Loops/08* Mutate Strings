@@ -1,0 +1,19 @@
+first_str = input()
+second_str = input()
+# The len function gives the total numbers of characters in the string. So, the range is defined by the lenght of the characters in the string.
+for i in range(len(first_str)):
+    if not first_str[i] == second_str[i]:
+# The list function separates the characters one from the other
+        first_str = list(first_str)
+# the first string elements equals the second string elements
+        first_str[i] = second_str[i]
+        print(''.join(first_str))
+
+first_str = input()
+second_str = input()
+for i in range(len(first_str)):
+    for e in range(len(second_str)):
+        if not first_str[i] == second_str[i]:
+            first_str = first_str.replace(first_str[i], second_str[i], 1)
+            print(first_str)
+            break
