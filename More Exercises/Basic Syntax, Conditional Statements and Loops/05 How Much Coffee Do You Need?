@@ -1,0 +1,26 @@
+word = input()
+coffee_count = 0
+
+while not word == "END":
+    if word == "dog".lower():
+        coffee_count += 1
+    elif word == "cat".lower():
+        coffee_count += 1
+    elif word == "coding".lower():
+        coffee_count += 1
+    elif word == "movie".lower():
+        coffee_count += 1
+    elif word == "dog".upper():
+        coffee_count += 2
+    elif word == "cat".upper():
+        coffee_count += 2
+    elif word == "coding".upper():
+        coffee_count += 2
+    elif word == "movie".upper():
+        coffee_count += 2
+    word = input()
+
+if coffee_count <= 5:
+    print(coffee_count)
+else:
+    print('You need extra sleep')
