@@ -1,0 +1,7 @@
+word = input()
+upper_positions = []
+for w in range(len(word)):
+    if word[w].isupper():
+        upper_positions.append(w)
+
+print(upper_positions)
