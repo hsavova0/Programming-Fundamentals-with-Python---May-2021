@@ -1,0 +1,14 @@
+string = input().lower()
+first_substring = "sand"
+second_substring = "water"
+third_substring = "fish"
+forth_substring = "sun"
+
+count = 0
+
+count += string.count(first_substring)
+count += string.count(second_substring)
+count += string.count(third_substring)
+count += string.count(forth_substring)
+
+print(count)
