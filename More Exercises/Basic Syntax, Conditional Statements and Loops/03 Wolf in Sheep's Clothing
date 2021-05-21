@@ -1,0 +1,13 @@
+pack = input().split(", ")
+last_element = pack[-1]
+count_of_ships = 0
+
+if last_element == "wolf":
+    print("Please go away and stop eating my sheep")
+else:
+    for i in range(len(pack) -1, -1, -1):
+        if not  pack[i] == "wolf":
+            count_of_ships += 1
+        else:
+            print(f'Oi! Sheep number {count_of_ships}! You are about to be eaten by a wolf!')
+            break
