@@ -1,0 +1,5 @@
+british_pound = int(input())
+
+us_dollers = british_pound * 1.31
+
+print(f'{us_dollers:.3f}')
