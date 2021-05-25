@@ -1,0 +1,8 @@
+century_input = int(input())
+
+centuries = century_input * 100
+years = int(century_input * 36524.22)
+days = years * 24
+hours = days * 60
+
+print(f"{century_input} centuries = {centuries} years = {years} days = {days} hours = {hours} minutes")
