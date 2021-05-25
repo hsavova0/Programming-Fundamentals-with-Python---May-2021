@@ -1,0 +1,11 @@
+first_name = input()
+second_name = input()
+delimiter = input()
+
+concat_names = []
+
+concat_names.append(first_name)
+concat_names.append(delimiter)
+concat_names.append(second_name)
+
+print("".join(concat_names))
