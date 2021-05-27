@@ -1,0 +1,8 @@
+number_of_lines = int(input())
+sum_characters = 0
+
+for n in range(number_of_lines):
+    characters = input()
+    sum_characters += ord(characters)
+
+print(f'The sum equals: {sum_characters}')
