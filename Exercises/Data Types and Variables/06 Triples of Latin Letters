@@ -1,0 +1,9 @@
+from itertools import product
+from string import ascii_lowercase
+
+number = int(input())
+
+first_chars = ascii_lowercase[:number]
+
+for word in product(first_chars, repeat = 3):
+    print(''.join(word))
