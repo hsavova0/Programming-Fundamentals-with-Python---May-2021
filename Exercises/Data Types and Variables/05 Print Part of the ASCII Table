@@ -1,0 +1,9 @@
+start_number = int(input())
+end_number = int(input())
+
+symbols = []
+
+for n in range(start_number, end_number+1):
+    symbols.append(chr(n))
+
+print(*symbols, sep=" ")
