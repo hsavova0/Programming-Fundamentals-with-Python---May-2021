@@ -1,0 +1,19 @@
+number_of_snowballs = int(input())
+snowball_value_list = []
+dict_snowball_1 = {}
+dict_snowball_2 = {}
+ 
+for each_snowball in range(number_of_snowballs):
+    snowball_snow = int(input())
+    snowball_time = int(input())
+    snowball_quality = int(input())
+    snowball_value = (snowball_snow // snowball_time) ** snowball_quality #calculates the value that needs to be compared
+    snowball_value_list.append(snowball_value)    
+# The max function will always return the maximum value in a list. If the current values is max this will overwrite the key and value in the dictionary. 
+    if snowball_value == max(snowball_value_list):
+        dict_snowball_1 = {snowball_snow: snowball_time}
+        dict_snowball_2 = {snowball_value:snowball_quality}
+# The values of a dictionary can be accessed only if we use .items after the dictionary, otherwise only the keys will be printed.
+for key_1, value_1 in dict_snowball_1.items():
+    for key_2, value_2 in dict_snowball_2.items():
+        print(f'{key_1} : {value_1} = {key_2} ({value_2})')
