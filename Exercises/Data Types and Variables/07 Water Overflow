@@ -1,0 +1,14 @@
+max_capacity = 255
+
+number_of_lines = int(input())
+
+total_litters = 0
+
+for n in range(number_of_lines):
+    litters_to_pour = int(input())
+    if total_litters + litters_to_pour > max_capacity:
+        print('Insufficient capacity!')
+    else:
+        total_litters += litters_to_pour
+
+print(total_litters)
