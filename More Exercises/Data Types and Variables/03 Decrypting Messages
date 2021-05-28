@@ -1,0 +1,10 @@
+key_integer = int(input())
+number = int(input())
+desciphered_letter = []
+
+for n in range(number):
+    letter = ord(input()) + key_integer
+    letter_to_append = chr(letter)
+    desciphered_letter.append(letter_to_append)
+
+print(*desciphered_letter, sep='')
