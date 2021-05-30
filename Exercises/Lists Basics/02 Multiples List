@@ -1,0 +1,10 @@
+factor = int(input())
+count = int(input())
+multiples_factor_list = []
+multiple = 0
+for c in range(count):
+    multiple += 1
+    number_to_append = factor * multiple
+    multiples_factor_list.append(number_to_append)
+
+print(multiples_factor_list)
