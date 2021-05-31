@@ -1,0 +1,22 @@
+beggars = input().split(", ")
+beggars = list(map(int, beggars)) # converts the elements of a list from str to int
+count_of_beggars = int(input())
+
+wealth = [] # here you will append the re-distributed wealth of the beggars
+
+if len(beggars) < count_of_beggars: # if the length of the list is smaller then the count, then the for cycle will give an error; the different should be represented by zeroes
+    difference = count_of_beggars - len(beggars)
+    for diff in range(difference):
+        beggars.append(0)
+
+
+for count in range(count_of_beggars): # the count represents the number of times the for cycle will be repeated. The range is exclusive.
+    sum_elem = 0 # this value keeps track of the re-distributed value that will be appended. At the beginning of the new for cycle this element becomes zero.
+    index = count # the index represents 1) the 1st index of the itteration and 2) the index of the number that needs to be added to the sum
+    while index < len(beggars):
+        sum_elem += beggars[index]
+        index += count_of_beggars # the incrementation of this value will end the while cycle
+
+    wealth.append(sum_elem) # the number is appended to the new list at the end of the while cycle
+
+print(wealth)
