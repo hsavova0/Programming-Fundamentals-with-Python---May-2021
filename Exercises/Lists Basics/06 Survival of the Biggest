@@ -1,0 +1,9 @@
+numbers = list(map(int, input().split(" ")))
+count = int(input())
+
+
+for n in range(count):
+    min_element = min(numbers)
+    numbers.remove(min_element)
+
+print(*numbers, sep=', ')
