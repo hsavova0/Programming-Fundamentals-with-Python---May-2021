@@ -1,0 +1,24 @@
+gifts_list = input().split(" ")
+command = input().split(" ")
+
+while not command[0] == 'No' and not command[1] == 'Money':
+    if command[0] == 'OutOfStock':
+        gift_to_none = command[1]
+        for gift in range(len(gifts_list)):
+            if gifts_list[gift] == gift_to_none:
+                gifts_list[gift] = 'None'
+    elif command[0] == 'Required':
+        gift_to_replace = command[1]
+        index = int(command[2])
+        if 0 < index < len(gifts_list):
+            gifts_list[index] = gift_to_replace
+    elif command[0] == 'JustInCase':
+        new_gift = command[1]
+        gifts_list.pop()
+        gifts_list.append(new_gift)
+
+    command = input().split()
+
+for el in gifts_list:
+    if not el == 'None':
+        print(el, end=' ')
