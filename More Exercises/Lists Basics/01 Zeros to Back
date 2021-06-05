@@ -1,0 +1,12 @@
+single_string = input().split(', ')
+zero_count = 0
+new_string = []
+for el in single_string:
+    if el == '0':
+        zero_count += 1
+    else:
+        new_string.append(el)
+for el in range(zero_count):
+    new_string.append('0')
+
+print(list(map(int, new_string)))
