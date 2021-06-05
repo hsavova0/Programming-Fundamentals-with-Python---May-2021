@@ -1,0 +1,4 @@
+single_string = input().split(' ')
+new_string = sorted(single_string, reverse=True)
+
+print(*new_string, sep='')
