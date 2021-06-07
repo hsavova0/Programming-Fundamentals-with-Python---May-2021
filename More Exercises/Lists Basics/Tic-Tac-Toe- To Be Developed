@@ -1,0 +1,44 @@
+def check_if_all_horizontal_are_equal(lst, set_list):
+    winner_list = []
+    if len(set_list) == 1:
+        for i in set_list:
+            if i == 1 or i == 2:
+                for e in lst:
+                    if e == i:
+                        winner_list.append(e)
+    if len(winner_list) > 0:
+        for i in winner_list:
+            if i == 1:
+                print('First player won')
+            if i == 2:
+                print('Second player won')
+
+
+def check_if_all_vertical_lines_are_equal(line_1, line_2, line_3):
+    for j in range(len(line_1)):
+        for k in range(len(line_2)):
+            for n in range(len(line_3)):
+                if line_1[j] == line_2[k] and line_1[j] == line_3[n]:
+                    if line_1[j] == 1:
+                        print('First player won')
+                    else:
+                        print('Second player won')
+
+
+def check_if_the_diagonals_are_equal(lst, line_input):
+    pass
+
+
+tic_tac_toe_options = [0, 1, 2]
+first_line = list(map(int, input().split()))
+second_line = list(map(int, input().split()))
+third_line = list(map(int, input().split()))
+set_1 = set(first_line)
+set_2 = set(second_line)
+set_3 = set(third_line)
+
+horizontal_winner = False
+horizontal_winner = check_if_all_horizontal_are_equal(tic_tac_toe_options, set_1)
+check_if_all_horizontal_are_equal(tic_tac_toe_options, set_2)
+check_if_all_horizontal_are_equal(tic_tac_toe_options, set_3)
+check_if_all_vertical_lines_are_equal(first_line, second_line, third_line)
