@@ -1,0 +1,37 @@
+health = 100
+coins = 0
+
+dungeons_room = input().split('|')
+passed_al_rooms = True
+
+for room in range(0, len(dungeons_room)):
+    command, num = dungeons_room[room].split()
+    number = int(num)
+    if command == 'potion':
+        if number + health <= 100:
+            health += number
+            print(f'You healed for {number} hp.')
+            print(f'Current health: {health} hp.')
+        elif health < 100:
+            health_to_add = 100 - health
+            if health_to_add < number:
+                health += health_to_add
+                print(f'You healed for {health_to_add} hp.')
+                print(f'Current health: {health} hp.')
+    elif command == 'chest':
+        coins += number
+        print(f'You found {number} bitcoins.')
+    else:
+        if health - number > 0:
+            health -= number
+            print(f'You slayed {command}.')
+        else:
+            print(f"You died! Killed by {command}.")
+            print(f'Best room: {room+1}')
+            passed_al_rooms = False
+            break
+
+if passed_al_rooms:
+    print(f"You've made it!")
+    print(f"Bitcoins: {coins}")
+    print(f"Health: {health}")
