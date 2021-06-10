@@ -1,0 +1,11 @@
+def palindrom(int_list):
+    for n in int_list:
+        if n == n[::-1]:
+            print('True')
+        else:
+            print('False')
+
+
+integers_list = input().split(', ')
+
+palindrom(integers_list)
