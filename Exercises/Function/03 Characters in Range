@@ -1,0 +1,12 @@
+def print_the_characters_in_range(ch_1, ch_2):
+    char_list = []
+    char_to_number_1 = ord(ch_1)
+    char_to_number_2 = ord(ch_2)
+    for i in range(char_to_number_1 + 1, char_to_number_2):
+        char_list.append(chr(i))
+    print(*char_list, sep=' ')
+
+char_1 = input()
+char_2 = input()
+
+print_the_characters_in_range(char_1, char_2)
