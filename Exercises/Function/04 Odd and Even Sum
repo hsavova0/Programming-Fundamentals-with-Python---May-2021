@@ -1,0 +1,23 @@
+def odd_numbers(num):
+    sum_of_odd_numbers = 0
+    for n in num:
+        num_int = int(n)
+        if not num_int % 2 == 0:
+            sum_of_odd_numbers += num_int
+    return sum_of_odd_numbers
+
+
+def even_numbers(num):
+    sum_of_even_numbers = 0
+    for n in num:
+        num_int = int(n)
+        if num_int % 2 == 0:
+            sum_of_even_numbers += num_int
+    return sum_of_even_numbers
+
+
+number = input()
+sum_odd = odd_numbers(number)
+sum_even = even_numbers(number)
+
+print(f'Odd sum = {sum_odd}, Even sum = {sum_even}')
