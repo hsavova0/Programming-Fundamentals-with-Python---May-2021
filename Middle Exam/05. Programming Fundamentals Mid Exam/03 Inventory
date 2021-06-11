@@ -1,0 +1,45 @@
+def collect(collection, action_1, item_1):
+    if action_1 == 'Collect':
+        if item_1 not in collection:
+            collection.append(item_1)
+    return collection
+
+
+def drop(collection, action_1, item_1):
+    if action_1 == 'Drop':
+        if item_1 in collection:
+            collection.remove(item_1)
+    return collection
+
+
+def combine_items(collection, action_1, item_1):
+    if action_1 == 'Combine Items':
+        old_item, new_item = item_1.split(':')
+        for i in range(len(collection)):
+            if collection[i] == old_item:
+                collection.insert(i+1, new_item)
+                break
+    return collection
+
+
+def renew(collection, action_1, item_1):
+    if action_1 == 'Renew':
+        if item_1 in collection:
+            collection.remove(item_1)
+            collection.append(item_1)
+    return collection
+
+
+collecting_items = input().split(', ')
+command = input().split(' - ')
+
+while not command[0] == 'Craft!':
+    action = command[0]
+    item = command[1]
+    collect(collecting_items, action, item)
+    drop(collecting_items, action, item)
+    combine_items(collecting_items, action, item)
+    renew(collecting_items, action, item)
+    command = input().split(' - ')
+
+print(*collecting_items, sep=', ')
