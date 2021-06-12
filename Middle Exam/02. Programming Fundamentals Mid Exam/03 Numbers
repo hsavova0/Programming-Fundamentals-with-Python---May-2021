@@ -1,0 +1,16 @@
+import statistics
+sequence_of_integers = list(map(int, input().split(' ')))
+average_number = statistics.mean(sequence_of_integers)
+
+greater_than_the_avarge_numbers = []
+
+for i in range(5):
+    max_number = max(sequence_of_integers)
+    if max_number > average_number:
+        greater_than_the_avarge_numbers.append(max_number)
+        sequence_of_integers.remove(max_number)
+
+if len(greater_than_the_avarge_numbers) == 0:
+    print('No')
+else:
+    print(*greater_than_the_avarge_numbers, sep=' ')
