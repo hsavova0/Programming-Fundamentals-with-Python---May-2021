@@ -1,0 +1,16 @@
+employee_efficiency_1 = int(input())
+employee_efficiency_2 = int(input())
+employee_efficiency_3 = int(input())
+students_count = int(input())
+
+employees_efficiency = employee_efficiency_1 + employee_efficiency_2 + employee_efficiency_3
+
+number_of_hours = 0
+
+while students_count > 0:
+    students_count -= employees_efficiency
+    number_of_hours += 1
+    if number_of_hours % 4 == 0:
+        students_count += employees_efficiency
+
+print(f'Time needed: {number_of_hours}h.')
