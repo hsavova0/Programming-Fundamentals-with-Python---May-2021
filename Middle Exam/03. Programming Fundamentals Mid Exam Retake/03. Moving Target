@@ -1,0 +1,40 @@
+def shoot(sequence, index, power):
+    if index in range(len(sequence)):
+        sequence[index] -= power
+        if sequence[index] <= 0:
+            del sequence[index]
+    return sequence
+
+
+def add(sequence, index, value):
+    if 0 <= index <= len(sequence)-1:
+        sequence.insert(index, value)
+        return sequence
+    else:
+        return print('Invalid placement!')
+
+
+def strike(sequence, index, radius):
+    if index - radius >= 0 and index + radius <= len(sequence):
+        del sequence[index - radius:index + radius + 1]
+        return sequence
+    else:
+        return print('Strike missed!')
+
+
+sequence_of_targets = list(map(int, input().split(' ')))
+command = input()
+
+while not command == 'End':
+    data_1, data_2, data_3 = command.split(' ')
+    data_2 = int(data_2)
+    data_3 = int(data_3)
+    if data_1 == 'Shoot':
+        shoot(sequence_of_targets, data_2, data_3)
+    elif data_1 == 'Add':
+        add(sequence_of_targets, data_2, data_3)
+    elif data_1 == 'Strike':
+        strike(sequence_of_targets, data_2, data_3)
+    command = input()
+
+print(*sequence_of_targets, sep='|')
