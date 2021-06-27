@@ -1,0 +1,21 @@
+targets_sequence = list(map(int, input().split(' ')))
+command = input()
+count_of_targets = 0
+
+while not command == 'End':
+    index = int(command)
+    if index < len(targets_sequence):
+        if targets_sequence[index] > - 1:
+            current_value = targets_sequence[index]
+            targets_sequence[index] = - 1
+            for i in range(len(targets_sequence)):
+                if targets_sequence[i] > current_value:
+                    targets_sequence[i] -= current_value
+                elif targets_sequence[i] <= current_value and not targets_sequence[i] == -1:
+                    targets_sequence[i] += current_value
+
+    command = input()
+
+count_of_shot_values = targets_sequence.count(-1)
+print(f'Shot targets: {count_of_shot_values} ->', end=' ')
+print((' '.join(str(el) for el in targets_sequence)))
