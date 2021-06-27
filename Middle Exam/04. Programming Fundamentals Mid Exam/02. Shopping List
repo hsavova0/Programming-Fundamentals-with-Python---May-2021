@@ -1,0 +1,52 @@
+def urgent(groceries_list, thing):
+    if thing not in groceries_list:
+        groceries_list.insert(0, thing)
+        return groceries_list
+    return groceries_list
+
+
+def unnecessary(groceries_list, thing):
+    if thing in groceries_list:
+        groceries_list.remove(thing)
+        return groceries_list
+    return groceries_list
+
+
+def correct(groceries_list, old_thing, new_thing):
+    if old_thing in groceries_list:
+        for i in range(len(groceries_list)):
+            if groceries_list[i] == old_thing:
+                groceries_list[i] = new_thing
+        return groceries_list
+    return groceries_list
+
+
+def rearrange(groceries_list, thing):
+    if thing in groceries_list:
+        groceries_list.remove(thing)
+        groceries_list.append(thing)
+        return groceries_list
+    return groceries_list
+
+
+groceries = input().split('!')
+command = input()
+
+while not command == 'Go Shopping!':
+    data = command.split(' ')
+    if data[0] == 'Urgent':
+        item = data[1]
+        urgent(groceries, item)
+    elif data[0] == 'Unnecessary':
+        item = data[1]
+        unnecessary(groceries, item)
+    elif data[0] == 'Correct':
+        old_item = data[1]
+        new_item = data[2]
+        correct(groceries, old_item, new_item)
+    elif data[0] == 'Rearrange':
+        item = data[1]
+        rearrange(groceries, item)
+    command = input()
+
+print(*groceries, sep=', ')
