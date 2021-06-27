@@ -1,0 +1,36 @@
+neighborhood = list(map(int, input().split('@')))
+command = input()
+start_index = 0
+
+while not command == 'Love!':
+    data, index = command.split()
+    index = int(index)
+    if index + start_index < len(neighborhood):
+        start_index += index
+        if neighborhood[start_index] - 2 == 0:
+            neighborhood[start_index] -= 2
+            print(f"Place {start_index} has Valentine's day.")
+        elif neighborhood[start_index] == 0:
+            print(f"Place {start_index} already had Valentine's day.")
+        else:
+            neighborhood[start_index] -= 2
+    else:
+        start_index = 0
+        if neighborhood[start_index] > 0:
+            neighborhood[start_index] -= 2
+            if neighborhood[start_index] == 0:
+                print(f"Place {start_index} has Valentine's day.")
+        else:
+            print(f"Place {start_index} already had Valentine's day.")
+    command = input()
+
+print(f"Cupid's last position was {start_index}.")
+
+if len(set(neighborhood)) == 1:
+    print(f"Mission was successful.")
+else:
+    count = 0
+    for i in range(len(neighborhood)):
+        if neighborhood[i] > 0:
+            count += 1
+    print(f"Cupid has failed {count} places.")
