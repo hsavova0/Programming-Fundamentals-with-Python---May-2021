@@ -1,0 +1,37 @@
+command = input()
+
+total_price = 0
+tax = 0
+customer = ''
+
+while True:
+    if command == 'special' or command == 'regular':
+        customer = command
+        break
+    else:
+        price_without_taxes = float(command)
+    if price_without_taxes > 0:
+        total_price += price_without_taxes
+        tax += price_without_taxes * 0.2
+    else:
+        print('Invalid price!')
+    command = input()
+
+total_amount = total_price + tax
+
+if total_price > 0:
+    if customer == 'regular':
+        print("Congratulations you've just bought a new computer!")
+        print(f'Price without taxes: {total_price:.2f}$')
+        print(f'Taxes: {tax:.2f}$')
+        print('-----------')
+        print(f'Total price: {total_amount:.2f}$')
+    else:
+        tax_discount = total_amount - (total_amount*0.1)
+        print("Congratulations you've just bought a new computer!")
+        print(f'Price without taxes: {total_price:.2f}$')
+        print(f'Taxes: {tax:.2f}$')
+        print('-----------')
+        print(f'Total price: {tax_discount:.2f}$')
+else:
+    print('Invalid order!')
