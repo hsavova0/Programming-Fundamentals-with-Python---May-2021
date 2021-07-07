@@ -1,0 +1,37 @@
+wagon_capacity = 4
+
+total_people = int(input())
+current_state = list(map(int, input().split(' ')))
+
+new_state = []
+
+max_lift_capacity = 4 * len(current_state)
+
+for i in range(len(current_state)):
+    if current_state[i] > 0:
+        difference = 4 - current_state[i]
+        total_people -= difference
+        new_state.append(current_state[i] + difference)
+    elif current_state[i] == 0:
+        if total_people - 4 >= 0:
+            total_people -= 4
+            new_state.append(4)
+        elif 0 <= total_people < 4:
+            new_state.append(total_people)
+            total_people -= total_people
+    if total_people <= 0:
+        break
+
+if len(current_state) > len(new_state):
+    difference = len(current_state) - len(new_state)
+    for i in range(difference):
+        new_state.append(0)
+
+if max_lift_capacity > sum(new_state) and total_people == 0:
+    print('The lift has empty spots!')
+    print(*new_state, sep=' ')
+elif max_lift_capacity == sum(new_state) and total_people > 0:
+    print(f"There isn\'t enough space! {total_people} people in a queue!")
+    print(*new_state, sep=' ')
+elif max_lift_capacity == sum(new_state) and total_people == 0:
+    print(*new_state, sep=' ')
