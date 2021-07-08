@@ -1,0 +1,46 @@
+def check_if_in_range(elements_list, first_index, second_index, number_of_moves):
+    if 0 <= first_index < len(elements_list) and 0 <= second_index < len(elements_list):
+        if elements_list[first_index] == elements_list[second_index]:
+            print(f'Congrats! You have found matching elements - {elements_list[first_index]}!')
+            el_to_remove = elements_list[first_index]
+            elements_list.pop(first_index)
+            elements_list.remove(el_to_remove)
+            return elements_list
+        else:
+            print('Try again!')
+            return elements_list
+    else:
+        print('Invalid input! Adding additional elements to the board')
+        middle_element = len(elements_list) // 2
+        elements_to_insert = '-' + str(number_of_moves) + 'a'
+        elements_list.insert(middle_element, elements_to_insert)
+        elements_list.insert(middle_element, elements_to_insert)
+        return elements_list
+
+
+elements = input().split(' ')
+
+command = input()
+
+count = 0
+
+is_end_received = True
+
+while True:
+    if command == 'end':
+        is_end_received = False
+        break
+    data = command.split(' ')
+    index_1 = int(data[0])
+    index_2 = int(data[1])
+    count += 1
+    check_if_in_range(elements, index_1, index_2, count)
+    if len(elements) == 0:
+        break
+    command = input()
+
+if is_end_received:
+    print(f"You have won in {count} turns!")
+else:
+    print('Sorry you lose :(')
+    print(*elements, sep=' ')
