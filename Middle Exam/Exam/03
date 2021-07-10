@@ -1,0 +1,69 @@
+def important(list_of_products, item):
+    if item in list_of_products:
+        important_item = item
+        list_of_products.remove(item)
+        list_of_products.insert(0, important_item)
+    else:
+        list_of_products.insert(0, item)
+    return list_of_products
+
+
+def add(list_of_products, item):
+    if item not in list_of_products:
+        list_of_products.append(item)
+        return list_of_products
+    else:
+        print('The product is already in the list.')
+    return list_of_products
+
+
+def swap(list_of_products, item_1, item_2):
+    if item_1 in list_of_products and item_2 in list_of_products:
+        index_item_1 = list_of_products.index(item_1)
+        index_item_2 = list_of_products.index(item_2)
+        list_of_products[index_item_1], list_of_products[index_item_2] = list_of_products[index_item_2], list_of_products[index_item_1]
+        return list_of_products
+    elif item_1 not  in list_of_products:
+        print(f'Product {item_1} missing!')
+        return list_of_products
+    elif item_2 not in list_of_products:
+        print(f'Product {item_2} missing!')
+        return list_of_products
+
+def remove(list_of_products, item):
+    if item in list_of_products:
+        list_of_products.remove(item)
+        return list_of_products
+    else:
+        print(f'Product {item} isn\'t in the list.')
+        return list_of_products
+
+
+products = input().split('|')
+commands = input()
+
+
+while not commands == 'Shop!':
+    data = commands.split('%')
+    command = data[0]
+    if command == 'Important':
+        product = data[1]
+        important(products, product)
+    elif command == 'Add':
+        product = data[1]
+        add(products, product)
+    elif command == 'Swap':
+        product_1 = data[1]
+        product_2 = data[2]
+        swap(products, product_1, product_2)
+    elif command == 'Remove':
+        product = data[1]
+        remove(products, product)
+    elif command == 'Reversed':
+        products = products[::-1]
+
+    commands = input()
+
+for i in range(0, len(products)):
+    index_number = i + 1
+    print(f'{index_number}. {products[i]}')
