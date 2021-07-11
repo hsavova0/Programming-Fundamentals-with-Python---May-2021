@@ -1,0 +1,11 @@
+#How to create dictionaries?
+
+bakery = input().split(' ')
+bakery_dictionary = {}
+
+for i in range(0, len(bakery), 2):
+    key = bakery[i]
+    value = bakery[i + 1]
+    bakery_dictionary[key] = int(value)
+
+print(bakery_dictionary)
