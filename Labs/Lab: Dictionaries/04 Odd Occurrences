@@ -1,0 +1,13 @@
+sequence = input().split(' ')
+words_dictionary = {}
+
+for s in sequence:
+    word = s.lower()
+    if word not in words_dictionary:
+        words_dictionary[word] = 1
+    else:
+        words_dictionary[word] += 1
+
+for word in words_dictionary:
+    if not words_dictionary[word] % 2 == 0:
+        print(word, end=' ')
