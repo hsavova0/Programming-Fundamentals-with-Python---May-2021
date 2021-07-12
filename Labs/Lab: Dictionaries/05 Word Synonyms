@@ -1,0 +1,18 @@
+count = int(input())
+words_list = []
+synonym_dictionary = {}
+total_count = count * 2
+
+for w in range(total_count):
+    word = input()
+    words_list.append(word)
+
+for w in range(0, len(words_list),2):
+    word = words_list[w]
+    synonym = words_list[w + 1]
+    if word not in synonym_dictionary:
+        synonym_dictionary[word] = []
+    synonym_dictionary[word].append(synonym)
+
+for word in synonym_dictionary:
+    print(f"{word} - {', '.join(synonym_dictionary[word])}")
