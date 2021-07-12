@@ -1,0 +1,21 @@
+commands = input()
+products_in_stock = {}
+
+while not commands == 'statistics':
+    data = commands.split(': ')
+    product = data[0]
+    quantity = int(data[1])
+    if product not in products_in_stock:
+        products_in_stock[product] = quantity
+    else:
+        products_in_stock[product] += quantity
+    commands = input()
+
+sum_all_quantities = 0
+
+print('Products in stock:')
+for product in products_in_stock:
+    sum_all_quantities += products_in_stock[product]
+    print(f'- {product}: {products_in_stock[product]}')
+print(f'Total Products: {len(products_in_stock)}')
+print(f'Total Quantity: {sum_all_quantities}')
