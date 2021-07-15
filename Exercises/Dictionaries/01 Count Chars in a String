@@ -1,0 +1,13 @@
+all_characters = input().split()
+
+dict_characters = {}
+
+for el in all_characters:
+    for char in el:
+        if char not in dict_characters:
+            dict_characters[char] = 1
+        else:
+            dict_characters[char] += 1
+
+for key, value in dict_characters.items():
+    print(f'{key} -> {value}')
