@@ -1,0 +1,15 @@
+resources = {}
+
+while True:
+    resource = input()
+    if not resource == 'stop':
+        quality = int(input())
+    else:
+        break
+    if resource not in resources:
+        resources[resource] = quality
+    else:
+        resources[resource] += quality
+
+for resource, quantity in resources.items():
+    print(f'{resource} -> {quantity}')
