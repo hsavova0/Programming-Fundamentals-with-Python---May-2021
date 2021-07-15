@@ -1,0 +1,25 @@
+command = input()
+
+products_dict = {}
+
+while not command == 'buy':
+    product, price, quantity = command.split(' ')
+    price = float(price)
+    quantity = float(quantity)
+    if product not in products_dict:
+        products_dict[product] = []
+        products_dict[product].append(price)
+        products_dict[product].append(quantity)
+    else:
+        products_dict[product][0] = price
+        products_dict[product][1] += quantity
+    command = input()
+
+total_price_products = {}
+
+for product in products_dict:
+    total_price_products[product] = products_dict[product][0] * products_dict[product][1]
+
+
+for key, value in total_price_products.items():
+    print(f'{key} -> {value:.2f}')
