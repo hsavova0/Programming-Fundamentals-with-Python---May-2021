@@ -1,0 +1,65 @@
+def resources_dict(mat, r_dict, q):
+    if mat in r_dict:
+        r_dict[mat] = q
+    else:
+        r_dict[mat] = q
+    return r_dict
+
+materials = {'Shadowmourne': 250, 'Valanyr': 250, 'Dragonwrath': 250}
+
+resources = {'shards': 0, 'fragments': 0, 'motes': 0}
+
+string = input().split(' ')
+
+for i in range(0, len(string), 2):
+    quantity = int(string[i])
+    material = string[i + 1].lower()
+
+    if material == 'shards':
+        if materials['Shadowmourne'] - quantity > 0:
+            materials['Shadowmourne'] -= quantity
+        elif materials['Shadowmourne'] - quantity == 0:
+            materials['Shadowmourne'] -= quantity
+            resources_dict(material, resources, quantity)
+            break
+        else:
+            materials['Shadowmourne'] = 0
+            new_quantity = (materials['Shadowmourne'] - quantity) * (-1)
+            resources_dict(material, resources, new_quantity)
+            break
+
+    if materials['Valanyr'] - quantity > 0:
+        materials['Valanyr'] -= quantity
+    elif materials['Valanyr'] - quantity == 0:
+        materials['Valanyr'] -= quantity
+        resources_dict(material, resources, quantity)
+        break
+    else:
+        materials['Valanyr'] = 0
+        new_quantity = (materials['Valanyr'] - quantity) * (-1)
+        resources_dict(material, resources, new_quantity)
+        break
+
+
+    if materials['Dragonwrath'] - quantity > 0:
+        materials['Dragonwrath'] -= quantity
+    elif materials['Dragonwrath'] - quantity == 0:
+        materials['Dragonwrath'] -= quantity
+        resources_dict(material, resources, quantity)
+        break
+    else:
+        materials['Dragonwrath'] = 0
+        new_quantity = (materials['Dragonwrath'] - quantity) * (-1)
+        resources_dict(material, resources, new_quantity)
+        break
+
+    if material in resources:
+        resources[material] += quantity
+    else:
+        resources[material] = quantity
+
+for key, value in materials.items():
+    if value <= 0:
+        print(f'{key} obtained!')
+
+print(resources)
