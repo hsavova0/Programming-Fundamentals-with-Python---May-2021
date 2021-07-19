@@ -1,0 +1,25 @@
+num = int(input())
+students_grade_dictionary = {}
+students_to_delete = []
+
+for n in range(num):
+    student = input()
+    grade = float(input())
+    if student not in students_grade_dictionary:
+        students_grade_dictionary[student] = []
+    students_grade_dictionary[student].append(grade)
+
+for key, value in students_grade_dictionary.items():
+    average_grade = sum(value) / len(value)
+    if average_grade < 4.50:
+        students_to_delete.append(key)
+    if average_grade >= 4.50:
+        students_grade_dictionary[key] = average_grade
+
+for i in students_to_delete:
+    del students_grade_dictionary[i]
+
+students_grade_dictionary_sorted = sorted(students_grade_dictionary.items(), key=lambda x: -x[1])
+
+for key, value in students_grade_dictionary_sorted:
+    print(f'{key} -> {value:.2f}')
