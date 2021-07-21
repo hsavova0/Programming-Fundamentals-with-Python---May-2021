@@ -1,0 +1,48 @@
+command = input()
+city_population_dict = {}
+city_gold_dict = {}
+
+while not command == 'Sail':
+    city, population, gold = command.split('||')
+    population = int(population)
+    gold = int(gold)
+    if city not in city_population_dict and city not in city_gold_dict:
+        city_population_dict[city] = population
+        city_gold_dict[city] = gold
+    else:
+        city_population_dict[city] += population
+        city_gold_dict[city] += gold
+    command = input()
+
+text = input()
+
+while not text == 'End':
+    event = text.split('=>')
+    if event[0] == "Plunder":
+        town = event[1]
+        people = int(event[2])
+        gold = int(event[3])
+        city_population_dict[town] -= people
+        city_gold_dict[town] -= gold
+        print(f"{town} plundered! {gold} gold stolen, {people} citizens killed.")
+        if city_gold_dict[town] == 0 or city_population_dict[town] == 0:
+            del city_gold_dict[town]
+            del city_population_dict[town]
+            print(f"{town} has been wiped off the map!")
+    if event[0] == 'Prosper':
+        town = event[1]
+        gold = int(event[2])
+        if gold < 0:
+            print(f'Gold added cannot be a negative number!')
+        else:
+            city_gold_dict[town] += gold
+            print(f'{gold} gold added to the city treasury. {town} now has {city_gold_dict[town]} gold.')
+    text = input()
+
+if len(city_gold_dict) > 0:
+    city_gold_dict_sorted = sorted(city_gold_dict.items(), key=lambda x:[-x[1], x[0]])
+    print(f'Ahoy, Captain! There are {len(city_gold_dict)} wealthy settlements to go to:')
+    for key, value in city_gold_dict_sorted:
+        print(f'{key} -> Population: {city_population_dict[key]} citizens, Gold: {value} kg')
+else:
+    print("Ahoy, Captain! All targets have been plundered and destroyed!")
