@@ -1,3 +1,4 @@
+80 %
 data = input()
 exam_results = {}
 language_statistics = {}
