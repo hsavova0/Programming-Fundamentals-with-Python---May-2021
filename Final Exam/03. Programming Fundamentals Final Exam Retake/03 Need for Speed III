@@ -1,0 +1,57 @@
+number_of_cars = int(input())
+cars_millage = {}
+cars_fuel = {}
+data = input()
+MAX_FUEL = 75
+
+for n in range(number_of_cars):
+    car, millage, fuel = data.split('|')
+    millage = int(millage)
+    fuel = int(fuel)
+    cars_millage[car] = millage
+    cars_fuel[car] = fuel
+    data = input()
+
+
+while not data == 'Stop':
+    command = data.split(' : ')
+    if command[0] == 'Drive':
+        car = command[1]
+        distance = int(command[2])
+        fuel = int(command[3])
+        if cars_fuel[car] - fuel <= 0:
+            print('Not enough fuel to make that ride')
+        else:
+            cars_fuel[car] -= fuel
+            cars_millage[car] += distance
+            print(f'{car} driven for {distance} kilometers. {fuel} liters of fuel consumed.')
+            if cars_millage[car] >= 100000:
+                del cars_millage[car]
+                del cars_fuel[car]
+                print(f"Time to sell the {car}!")
+    elif command[0] == 'Refuel':
+        car = command[1]
+        fuel = int(command[2])
+        if cars_fuel[car] + fuel > 75:
+            total_amount_fuel = cars_fuel[car] + fuel
+            difference = total_amount_fuel - MAX_FUEL
+            refilled_amount = fuel - difference
+            cars_fuel[car] = 75
+            print(f'{car} refueled with {refilled_amount} liters')
+        else:
+            cars_fuel[car] += fuel
+            print(f'{car} refueled with {fuel} liters')
+    elif command[0] == 'Revert':
+        car = command[1]
+        kilometers = int(command[2])
+        if cars_millage[car] - kilometers <= 10000:
+            cars_millage[car] = 10000
+        else:
+            cars_millage[car] -= kilometers
+            print(f'{car} mileage decreased by {kilometers} kilometers')
+    data = input()
+
+cars_millage_sorted = sorted(cars_millage.items(), key=lambda x: (-x[1], x[0]))
+
+for key, value in cars_millage_sorted:
+    print(f'{key} -> Mileage: {value} kms, Fuel in the tank: {cars_fuel[key]} lt.')
