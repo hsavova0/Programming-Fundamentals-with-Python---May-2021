@@ -1,0 +1,8 @@
+text = input()
+unique_text = ' '
+
+for symbol in text:
+    if not unique_text[-1] == symbol:
+        unique_text += symbol
+
+print(unique_text.lstrip())
