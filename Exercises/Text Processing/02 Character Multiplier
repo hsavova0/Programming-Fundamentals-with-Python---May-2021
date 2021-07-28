@@ -1,0 +1,34 @@
+two_strings = input().split(' ')
+first_word = two_strings[0]
+second_word = two_strings[1]
+total_sum = 0
+if len(first_word) == len(second_word):
+    for i in range(len(first_word)):
+        num_1 = ord(first_word[i])
+        num_2 = ord(second_word[i])
+        multiplied_sum = num_1 * num_2
+        total_sum += multiplied_sum
+else:
+    if len(second_word) > len(first_word):
+        sliced_first_half = second_word[:len(first_word)]
+        sliced_second_half = second_word[len(first_word):]
+        for i in range(len(first_word)):
+            num_1 = ord(first_word[i])
+            num_2 = ord(sliced_first_half[i])
+            multiplied_sum = num_1 * num_2
+            total_sum += multiplied_sum
+        for i in range(len(sliced_second_half)):
+            num_to_add = ord(sliced_second_half[i])
+            total_sum += num_to_add
+    else:
+        sliced_first_half = first_word[:len(second_word)]
+        sliced_second_half = first_word[len(second_word):]
+        for i in range(len(second_word)):
+            num_1 = ord(second_word[i])
+            num_2 = ord(sliced_first_half[i])
+            multiplied_sum = num_1 * num_2
+            total_sum += multiplied_sum
+        for i in range(len(sliced_second_half)):
+            num_to_add = ord(sliced_second_half[i])
+            total_sum += num_to_add
+print(total_sum)
