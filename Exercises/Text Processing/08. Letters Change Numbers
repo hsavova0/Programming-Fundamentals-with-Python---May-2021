@@ -1,0 +1,24 @@
+letters_dict = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25, 'z': 26}
+
+text = input().split()
+total_sum = 0
+for word in text:
+    first_letter = word[0]
+    last_letter = word[-1]
+    numbers_as_strings = word[1:-1]
+    number = int(numbers_as_strings)
+    if first_letter.isupper():
+        key = first_letter.lower()
+        divide = number / letters_dict[key]
+        total_sum += divide
+    else:
+        multiply = number * letters_dict[first_letter]
+        total_sum += multiply
+    if last_letter.isupper():
+        key = last_letter.lower()
+        total_sum -= letters_dict[key]
+    else:
+        total_sum += letters_dict[last_letter]
+        a = 5
+
+print(f'{total_sum:.2f}')
