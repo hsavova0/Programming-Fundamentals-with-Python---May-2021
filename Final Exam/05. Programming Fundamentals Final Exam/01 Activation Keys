@@ -1,0 +1,44 @@
+def contains(string, sub_string):
+    if sub_string in string:
+        print(f'{string} contains {sub_string}')
+    else:
+        print("Substring not found!")
+    return string
+
+
+raw_key = input()
+data = input()
+
+while not data == 'Generate':
+    data_to_split = data.split('>>>')
+    if data_to_split[0] == 'Contains':
+        substring = data_to_split[1]
+        contains(raw_key, substring)
+    elif data_to_split[0] == 'Flip':
+        type_of_letter = data_to_split[1]
+        start_index = int(data_to_split[2])
+        end_index = int(data_to_split[3])
+        if type_of_letter == 'Upper':
+            first_part = raw_key[:start_index]
+            part_to_modify = raw_key[start_index:end_index]
+            second_part = raw_key[end_index:]
+            part_to_modify = part_to_modify.upper()
+            raw_key = first_part + part_to_modify + second_part
+            print(raw_key)
+        if type_of_letter == 'Lower':
+            first_part = raw_key[:start_index]
+            part_to_modify = raw_key[start_index:end_index]
+            second_part = raw_key[end_index:]
+            part_to_modify = part_to_modify.lower()
+            raw_key = first_part + part_to_modify + second_part
+            print(raw_key)
+    elif data_to_split[0] == 'Slice':
+        start_index = int(data_to_split[1])
+        end_index = int(data_to_split[2])
+        first_part = raw_key[:start_index]
+        second_part = raw_key[end_index:]
+        raw_key = first_part + second_part
+        print(raw_key)
+    data = input()
+
+print(f'Your activation key is: {raw_key}')
