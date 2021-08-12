@@ -1,0 +1,36 @@
+# 40 out of 100
+
+import re
+
+pattern = r'(^|(?<=\s))(?P<surr>\:{2}|\*{2})(?P<emoj>[A-Z]+[a-z]{2,})(?P=surr)'
+pattern_numbers = r'\d'
+text = input()
+
+all_numbers_in_text_as_strings = re.findall(pattern_numbers, text)
+all_numbers_in_text_as_int = [int(num_int) for num_int in all_numbers_in_text_as_strings]
+
+threshold = 1
+
+for num in all_numbers_in_text_as_int:
+    threshold *= num
+
+emoji_count = 0
+valid_emoji = []
+
+print(f'Cool threshold: {threshold}')
+
+
+for match in re.finditer(pattern, text):
+    emoji_count += 1
+    data = match.groupdict()
+    emoji = data["emoj"]
+    emoji_number_to_check = 0
+    for el in emoji:
+        emoji_number_to_check += ord(el)
+    if emoji_number_to_check > threshold:
+        valid_emoji.append(f"{data['surr']}{data['emoj']}{data['surr']}")
+
+print(f'{emoji_count} emojis found in the text. The cool ones are:')
+
+for emoji in valid_emoji:
+    print(emoji)
